@@ -8,16 +8,16 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@Table(name = "students")
+@Table(name = "tournaments")
 public class TournamentJpaEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "prix")
-    private Double prix;
+    private double prix;
 
     @Column(name = "nom")
     private String nom;
 
-    @Column(name = "date")
+    @Column(name = "date_tournament")
     private LocalDate date;
 }
