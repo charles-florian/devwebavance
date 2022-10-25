@@ -16,7 +16,7 @@ public class TournamentPersistenceAdapter implements TournamentListUseCase {
     private final TournamentMapper tournamentMapper;
 
     @Override
-    public static List<Tournament> getTournamentList() {
+    public  List<Tournament> getTournamentList() {
         List<TournamentJpaEntity> tournamentEntity = tournamentRepository.findAll();
         return tournamentMapper.mapToDomainEntity(tournamentEntity);
     }
