@@ -3,7 +3,7 @@ package be.heh.projet_dev_web;
 import be.heh.projet_dev_web.adaptater.in.AddController;
 import be.heh.projet_dev_web.model.Tournament;
 import be.heh.projet_dev_web.port.in.TournamentAddUseCase;
-import org.hamcrest.Matchers;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,6 @@ public class AjoutTournamentTests {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("tournamentAdd"))
-                .andExpect(model().attributeExists("tournament"))
-                /*.andExpect(model().attribute("tournament",Matchers.hasSize(3)))*/;
+                .andExpect(model().attributeExists("tournament"));
     }
 }
