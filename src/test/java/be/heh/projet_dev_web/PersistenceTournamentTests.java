@@ -30,6 +30,7 @@ public class PersistenceTournamentTests extends AbstractIntegrationTest{
     private TournamentRepository tournamentRepository;
     private TournamentMapper tournamentMapper;
 
+
     private TournamentPersistenceAdapter tournamentPersistenceAdapter;
 
     @Test
@@ -38,11 +39,11 @@ public class PersistenceTournamentTests extends AbstractIntegrationTest{
         tournamentMapper = new TournamentMapper();
         tournamentPersistenceAdapter = new TournamentPersistenceAdapter(tournamentRepository,tournamentMapper);
 
-        List<Tournament> tournaments;
+        List<Tournament> tournament;
 
-        tournaments = tournamentPersistenceAdapter.getTournamentList();
+        tournament = tournamentPersistenceAdapter.getTournamentList();
 
 
-        assertEquals("lol",tournaments.get(1).getNom());
+        assertEquals("lol",tournament.get(1).getNom());
     }
 }
