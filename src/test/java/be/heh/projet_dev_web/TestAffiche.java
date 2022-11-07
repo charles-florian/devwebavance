@@ -2,6 +2,7 @@ package be.heh.projet_dev_web;
 
 import be.heh.projet_dev_web.adaptater.in.TournamentControler;
 import be.heh.projet_dev_web.model.Tournament;
+import be.heh.projet_dev_web.port.in.TournamentAddUseCase;
 import be.heh.projet_dev_web.port.in.TournamentListUseCase;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -32,6 +33,11 @@ public class TestAffiche {
 
     @MockBean
     private TournamentListUseCase tournamentListUseCase;
+
+    @MockBean
+    private TournamentAddUseCase tournamentAddUseCase;
+
+
 
     private List<Tournament> tournaments = new ArrayList<>();
 

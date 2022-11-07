@@ -1,9 +1,10 @@
 package be.heh.projet_dev_web;
 
-import be.heh.projet_dev_web.adaptater.in.AddController;
+import be.heh.projet_dev_web.adaptater.in.TournamentControler;
 import be.heh.projet_dev_web.model.Tournament;
 import be.heh.projet_dev_web.port.in.TournamentAddUseCase;
 
+import be.heh.projet_dev_web.port.in.TournamentListUseCase;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,11 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-@WebMvcTest(AddController.class)
+@WebMvcTest(TournamentControler.class)
 public class AjoutTournamentTests {
 
     @Autowired
@@ -25,6 +27,9 @@ public class AjoutTournamentTests {
     @MockBean
     private TournamentAddUseCase tournamentAddUseCase;
 
+    @MockBean
+    private TournamentListUseCase tournamentListUseCase;
+
     private Tournament tournament;
 
     @Test
@@ -32,11 +37,10 @@ public class AjoutTournamentTests {
         tournament=new Tournament("VALORANT", LocalDate.now(),25.5);
 
         //Stub
-        Mockito.when(tournamentAddUseCase.addTournament()).thenReturn(tournament);
+        Mockito.when(tournamentAddUseCase.addTournament(tournament)).thenReturn(tournament);
 
-        mockMvc.perform(get("/"))
+        mockMvc.perform(post("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("tournamentAdd"))
-                .andExpect(model().attributeExists("tournament"));
+                .andExpect(view().name("tournamentAdd"));
     }
 }
