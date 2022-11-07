@@ -6,7 +6,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.time.LocalDate;
 
 @DataJpaTest
-public class AddPersistenceTests {
+public class AddPersistenceTests extends AbstractIntegrationTest {
 
     Tournament tournament=new Tournament("VALORANT", LocalDate.now(),17.5);
+
+
 }

@@ -33,7 +33,7 @@ public class PersistenceTournamentTests extends AbstractIntegrationTest{
     private TournamentPersistenceAdapter tournamentPersistenceAdapter;
 
     @Test
-    @Sql({"createStudentTable.sql","dataStudent.sql"})
+    @Sql({"createTournamentTable.sql","dataTournament.sql"})
     void getTournamentList(){
         tournamentMapper = new TournamentMapper();
         tournamentPersistenceAdapter = new TournamentPersistenceAdapter(tournamentRepository,tournamentMapper);

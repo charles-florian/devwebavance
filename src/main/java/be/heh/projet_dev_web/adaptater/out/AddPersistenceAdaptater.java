@@ -10,6 +10,7 @@ public class AddPersistenceAdaptater implements TournamentAddUseCase {
 
     @Override
     public Tournament addTournament(Tournament tournament) {
+
         return null;
     }
 }
