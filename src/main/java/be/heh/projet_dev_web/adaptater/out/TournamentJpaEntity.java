@@ -12,11 +12,13 @@ import java.time.LocalDate;
 public class TournamentJpaEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "nom")
+    private String nom;
+
     @Column(name = "prix")
     private double prix;
 
-    @Column(name = "nom")
-    private String nom;
+
 
     @Column(name = "date_tournament")
     private LocalDate date;
