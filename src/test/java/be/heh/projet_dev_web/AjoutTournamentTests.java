@@ -37,7 +37,7 @@ public class AjoutTournamentTests {
         tournament=new Tournament("VALORANT", LocalDate.now(),25.5);
 
         //Stub
-        Mockito.when(tournamentAddUseCase.addTournament(tournament)).thenReturn(tournament);
+        Mockito.when(tournamentAddUseCase.addTournament(tournament)).thenReturn(null);
 
         mockMvc.perform(post("/"))
                 .andExpect(status().isOk())

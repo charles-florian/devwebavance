@@ -22,4 +22,12 @@ public class TournamentJpaEntity {
 
     @Column(name = "date")
     private LocalDate date;
+
+    public TournamentJpaEntity(String nom,LocalDate date,Double prix){
+        this.nom=nom;
+        this.date=date;
+        this.prix=prix;
+    }
+
+    protected TournamentJpaEntity() {}
 }

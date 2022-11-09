@@ -7,8 +7,7 @@ import be.heh.projet_dev_web.port.in.TournamentListUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -35,9 +34,11 @@ public class TournamentControler {
 
     private Tournament tournament;
 
+
+
     @PostMapping("/")
     public String tournamentAdd(Model model){
-        tournament=tournamentAddUseCase.addTournament(tournament);
+        tournamentAddUseCase.addTournament(tournament);
         model.addAttribute("tournament",tournament);
         return("tournamentAdd");
     }

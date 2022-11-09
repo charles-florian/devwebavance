@@ -4,5 +4,5 @@ import be.heh.projet_dev_web.model.Tournament;
 
 public interface TournamentAddUseCase {
 
-    Tournament addTournament(Tournament tournament);
+    String addTournament(Tournament tournament);
 }
