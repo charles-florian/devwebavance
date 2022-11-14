@@ -20,8 +20,9 @@ public class TournamentJpaEntity {
     @Column(name = "nom")
     private String nom;
 
-    @Column(name = "date")
+    @Column(name = "date_tournament")
     private LocalDate date;
+    public TournamentJpaEntity(){}
 
     public TournamentJpaEntity(String nom,LocalDate date,Double prix){
         this.nom=nom;
@@ -29,5 +30,5 @@ public class TournamentJpaEntity {
         this.prix=prix;
     }
 
-    protected TournamentJpaEntity() {}
+    //protected TournamentJpaEntity() {}
 }
