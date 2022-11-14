@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Entity
 @Data
 @Setter
-@Table(name = "students")
+@Table(name = "tournaments")
 public class TournamentJpaEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

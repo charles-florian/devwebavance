@@ -18,9 +18,7 @@ public class TournamentControler {
 
     //Get
     private final TournamentListUseCase tournamentListUseCase;
-
     private List<Tournament> tournaments;
-
     @GetMapping("/")
     public String tournamentList(Model model){
         tournaments = tournamentListUseCase.getTournamentList();
@@ -28,23 +26,13 @@ public class TournamentControler {
         return  "tournamentList";
     }
 
-
     //Post
     private final TournamentAddUseCase tournamentAddUseCase;
-
     private Tournament tournament;
-
-
-
     @PostMapping("/")
     public String tournamentAdd(Model model){
         tournamentAddUseCase.addTournament(tournament);
         model.addAttribute("tournament",tournament);
         return("tournamentAdd");
     }
-
-
-
-
-
 }
