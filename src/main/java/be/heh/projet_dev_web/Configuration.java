@@ -16,7 +16,7 @@ public class Configuration {
     @Autowired
     private TournamentRepository tournamentRepository;
 
-    private TournamentMapper tournamentMapper;
+    private TournamentMapper tournamentMapper=new TournamentMapper();
 
     @Bean
     TournamentAddUseCase addTournament(){

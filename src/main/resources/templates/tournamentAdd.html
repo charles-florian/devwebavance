@@ -7,10 +7,10 @@
 <body>
 
     <h1>Ajout de tournoi</h1>
-    <form>
-        <input type="text" name="nom" placeholder="nom" required/><br>
-        <input type="date" name="date" placeholder="date" required/><br>
-        <input type="text" name="prix" placeholder="prix" required/><br>
+    <form action="#" th:action="@{/tournament}" th:object="${tournament}">
+        <input type="text" th:field="*{nom}" placeholder="nom" required/><br><br>
+        <input type="date" th:field="*{date}" placeholder="date" required/><br><br>
+        <input type="text" name="prix" th:field="*{prix}" placeholder="prix" required/><br><br>
         <input type="submit"/>
     </form>
 
