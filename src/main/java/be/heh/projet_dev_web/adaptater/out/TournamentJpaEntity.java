@@ -13,9 +13,12 @@ import java.time.LocalDate;
 @Table(name = "tournaments")
 public class TournamentJpaEntity {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="id_tournament")
+    private Long id_tournament;
+
     @Column(name = "prix")
-    private Double prix;
+    private double prix;
 
     @Column(name = "nom")
     private String nom;
@@ -24,7 +27,7 @@ public class TournamentJpaEntity {
     private LocalDate date;
     public TournamentJpaEntity(){}
 
-    public TournamentJpaEntity(String nom,LocalDate date,Double prix){
+    public TournamentJpaEntity(String nom,LocalDate date,double prix){
         this.nom=nom;
         this.date=date;
         this.prix=prix;

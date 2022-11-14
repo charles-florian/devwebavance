@@ -43,6 +43,6 @@ public class PersistenceTournamentTests extends AbstractIntegrationTest{
         tournaments = tournamentPersistenceAdapter.getTournamentList();
 
 
-        assertEquals("lol",tournaments.get(1).getNom());
+        assertEquals("lol",tournaments.get(0).getNom());
     }
 }
