@@ -34,7 +34,7 @@ public class AjoutTournamentTests {
 
     @Test
     public void testAddTournamentController() throws Exception {
-        tournament=new Tournament("VALORANT", LocalDate.now(),25.5);
+        tournament=new Tournament("VALORANT", LocalDate.now(),25.5,10);
 
         //Stub
         Mockito.when(tournamentAddUseCase.addTournament(tournament)).thenReturn(null);

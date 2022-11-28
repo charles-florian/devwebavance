@@ -14,4 +14,7 @@ public class Tournament {
     private final LocalDate date;
     @Getter
     private final Double prix;
+
+    @Getter
+    private final long id_tournament;
     }
