@@ -11,7 +11,7 @@ public class Tournament {
     @Getter
     private final String nom;
     @Getter
-    private final LocalDate date;
+    private final String date;
     @Getter
     private final Double prix;
 

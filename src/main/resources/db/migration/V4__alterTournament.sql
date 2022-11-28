@@ -1,0 +1,1 @@
+ALTER TABLE tournaments ALTER COLUMN date_tournament TYPE varchar(20);

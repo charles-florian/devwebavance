@@ -24,10 +24,10 @@ public class TournamentJpaEntity {
     private String nom;
 
     @Column(name = "date_tournament")
-    private LocalDate date;
+    private String date;
     public TournamentJpaEntity(){}
 
-    public TournamentJpaEntity(String nom,LocalDate date,double prix){
+    public TournamentJpaEntity(String nom, String date, double prix){
         this.nom=nom;
         this.date=date;
         this.prix=prix;

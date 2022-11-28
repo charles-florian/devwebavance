@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -33,11 +34,20 @@ public class TournamentControler {
     //Post
     private final TournamentAddUseCase tournamentAddUseCase;
     private Tournament tournament;
-    @PostMapping("/tournamentAdd")
-    public ModelAndView tournamentAdd(Model model){
-        tournamentAddUseCase.addTournament(tournament);
-        model.addAttribute("tournament",tournament);
+    @GetMapping("/tournamentAdd")
+    @ResponseBody
+    public ModelAndView tournamentAddView(Model model){
+
         m.setViewName("tournamentAdd");
+        return m;
+    }
+
+    @PostMapping("/tournamentAdd")
+    public ModelAndView tournamentAdd(@ModelAttribute("tournamentAdd") Tournament tournament){
+        Tournament t = new Tournament(tournament.getNom(), tournament.getDate(), tournament.getPrix(), tournament.getId_tournament());
+        tournamentAddUseCase.addTournament(t);
+
+        m.setViewName("index");
         return m;
     }
 }
