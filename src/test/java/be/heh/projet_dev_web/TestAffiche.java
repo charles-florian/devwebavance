@@ -53,8 +53,8 @@ public class TestAffiche {
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("tournamentList"))
+                .andExpect(view().name("index"))
                 .andExpect(model().attributeExists("tournaments"))
-                .andExpect(model().attribute("tournaments", Matchers.hasSize(4)));
+                .andExpect(model().attribute("tournaments", Matchers.hasSize(3)));
     }
 }

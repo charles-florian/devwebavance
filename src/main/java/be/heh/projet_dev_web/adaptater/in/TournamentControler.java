@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -16,23 +17,27 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TournamentControler {
 
+    ModelAndView m = new ModelAndView();
     //Get
     private final TournamentListUseCase tournamentListUseCase;
     private List<Tournament> tournaments;
     @GetMapping("/")
-    public String tournamentList(Model model){
+    public ModelAndView tournamentList(Model model){
         tournaments = tournamentListUseCase.getTournamentList();
         model.addAttribute("tournaments",tournaments);
-        return  "tournamentList";
+
+        m.setViewName("index");
+        return m;
     }
 
     //Post
     private final TournamentAddUseCase tournamentAddUseCase;
     private Tournament tournament;
-    @PostMapping("/")
-    public String tournamentAdd(Model model){
+    @PostMapping("/tournamentAdd")
+    public ModelAndView tournamentAdd(Model model){
         tournamentAddUseCase.addTournament(tournament);
         model.addAttribute("tournament",tournament);
-        return("tournamentAdd");
+        m.setViewName("tournamentAdd");
+        return m;
     }
 }
