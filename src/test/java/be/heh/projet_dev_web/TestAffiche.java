@@ -2,6 +2,7 @@ package be.heh.projet_dev_web;
 
 import be.heh.projet_dev_web.adaptater.in.TournamentControler;
 import be.heh.projet_dev_web.model.Tournament;
+import be.heh.projet_dev_web.port.in.TournamentAddUseCase;
 import be.heh.projet_dev_web.port.in.TournamentListUseCase;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -33,21 +34,26 @@ public class TestAffiche {
     @MockBean
     private TournamentListUseCase tournamentListUseCase;
 
+    @MockBean
+    private TournamentAddUseCase tournamentAddUseCase;
+
+
+
     private List<Tournament> tournaments = new ArrayList<>();
 
     @Test
     public void testTournamentController() throws Exception {
 
-        tournaments.add(new Tournament("tata", LocalDate.of(2010,03,24),17.5));
-        tournaments.add(new Tournament("tata1", LocalDate.of(2011,04,25),17.5));
-        tournaments.add(new Tournament("tata2", LocalDate.of(2012,05,26),17.5));
+        tournaments.add(new Tournament("tata", LocalDate.of(2010,03,24),17.5,1));
+        tournaments.add(new Tournament("tata1", LocalDate.of(2011,04,25),17.5,2));
+        tournaments.add(new Tournament("tata2", LocalDate.of(2012,05,26),17.5,3));
 
         //Stub
         Mockito.when(tournamentListUseCase.getTournamentList()).thenReturn(tournaments);
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("tournamentList"))
+                .andExpect(view().name("index"))
                 .andExpect(model().attributeExists("tournaments"))
                 .andExpect(model().attribute("tournaments", Matchers.hasSize(3)));
     }

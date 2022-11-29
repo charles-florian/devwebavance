@@ -11,7 +11,7 @@ public class TournamentMapper {
         List<Tournament> tournamentsList = new ArrayList<>();
 
         for (TournamentJpaEntity tournamentJpaEntity: tournaments) {
-            tournamentsList.add(new Tournament(tournamentJpaEntity.getNom(),tournamentJpaEntity.getDate(),tournamentJpaEntity.getPrix()));
+            tournamentsList.add(new Tournament(tournamentJpaEntity.getNom(),tournamentJpaEntity.getDate(),tournamentJpaEntity.getPrix(),tournamentJpaEntity.getId_tournament()));
         }
         return tournamentsList;
     }
