@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AddPersistenceTests extends AbstractIntegrationTest {
 
-    private Tournament tournament=new Tournament("VALORANT",LocalDate.now(),15.5,10);
+    private Tournament tournament=new Tournament("VALORANT","LocalDate.now()",15.5,10);
 
     @Autowired
     private TournamentRepository tournamentRepository;

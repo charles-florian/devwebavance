@@ -4,6 +4,8 @@ package be.heh.projet_dev_web.adaptater.in;
 import be.heh.projet_dev_web.model.Tournament;
 import be.heh.projet_dev_web.port.in.TournamentAddUseCase;
 import be.heh.projet_dev_web.port.in.TournamentListUseCase;
+import be.heh.projet_dev_web.port.in.TournamentUpdateUseCase;
+import jdk.internal.icu.text.NormalizerBase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -33,7 +36,7 @@ public class TournamentControler {
 
     //Post
     private final TournamentAddUseCase tournamentAddUseCase;
-    private Tournament tournament;
+    //private Tournament tournament;
     @GetMapping("/tournamentAdd")
     @ResponseBody
     public ModelAndView tournamentAddView(Model model){
@@ -52,6 +55,26 @@ public class TournamentControler {
         return redirectView;
     }
 
+    //UPDATE
 
+    private final TournamentUpdateUseCase tournamentUpdateUseCase;
+
+
+    @RequestMapping(value = "/tournamentUpdate/{id}", method = RequestMethod.GET)
+    public ModelAndView tournamentUpdateView(@PathVariable("id") String id) {
+        tournaments=tournamentUpdateUseCase.toUpdateTournament(id);
+        m.setViewName("tournamentUpdate");
+        return m ;
+
+    }
+
+    @RequestMapping(value="tournamentUpdate/{id}", method = RequestMethod.POST)
+    public RedirectView tournamentUpdate(@PathVariable("id") String id){
+
+
+
+        RedirectView redirectView= new RedirectView("/");
+        return redirectView;
+    }
 
 }

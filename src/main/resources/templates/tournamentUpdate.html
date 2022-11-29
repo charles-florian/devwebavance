@@ -5,22 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-
-    <h1>coucou</h1>
-    <a th:href=@{'/tournamentAdd'}>ADD</a>
-
+    <h1>UPDATE Tournament</h1>
     <table>
         <tr th:each="tournament: ${tournaments}">
             <td th:text="${tournament.getNom}"></td>
             <td th:text="${tournament.getPrix}"></td>
             <td th:text="${tournament.getDate}"></td>
-            <td><a th:href=@{'/tournamentUpdate/'}+${tournament.getId_tournament}>UPDATE</a></td>
-            <td><a th:href=@{'/tournamentDelete/'}+${tournament.getId_tournament}>DELETE</a></td>
         </tr>
     </table>
-
-
-
 
 </body>
 </html>
