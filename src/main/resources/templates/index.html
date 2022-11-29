@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+<body id="body">
+
 
     <h1>coucou</h1>
     <a th:href=@{'/tournamentAdd'}>ADD</a>
+    <table>
     <tr th:each="tournament: ${tournaments}">
         <td th:text="${tournament.getNom}"></td>
         <td th:text="${tournament.getPrix}"></td>
         <td th:text="${tournament.getDate}"></td>
+        <td><a th:href=@{'/tournamentDelete/'}+${tournament.getId_tournament}>DELETE</a></td>
     </tr>
+    </table>
 
 </body>
 </html>

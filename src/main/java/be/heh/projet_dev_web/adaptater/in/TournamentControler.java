@@ -3,6 +3,7 @@ package be.heh.projet_dev_web.adaptater.in;
 
 import be.heh.projet_dev_web.model.Tournament;
 import be.heh.projet_dev_web.port.in.TournamentAddUseCase;
+import be.heh.projet_dev_web.port.in.TournamentDeleteUseCase;
 import be.heh.projet_dev_web.port.in.TournamentListUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,8 @@ import java.util.List;
 public class TournamentControler {
 
     ModelAndView m = new ModelAndView();
+
+    TournamentDeleteUseCase tournamentDeleteUseCase;
     //Get
     private final TournamentListUseCase tournamentListUseCase;
     private List<Tournament> tournaments;
@@ -51,6 +54,17 @@ public class TournamentControler {
         RedirectView redirectView= new RedirectView("/");
         return redirectView;
     }
+
+
+    @RequestMapping(value="/tournamentDelete/{id}", method = {RequestMethod.GET ,RequestMethod.DELETE})
+    public RedirectView tournamentDelete(@PathVariable("id")Long id){
+        tournamentDeleteUseCase.tournamentDelete(id);
+
+        RedirectView redirectView= new RedirectView("/");
+        return redirectView;
+
+    }
+
 
 
 
