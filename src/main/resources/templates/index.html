@@ -2,22 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TEst données</title>
+    <title>Title</title>
 </head>
 <body>
-<h1>coucou</h1>
-    <tr th:each="tournament: ${tournaments}">
-        <td th:text="${tournament.getNom}"></td>
-        <td th:text="${tournament.getPrix}"></td>
-        <td th:text="${tournament.getDate}"></td>
-    </tr>
 
     <h1>coucou</h1>
-
+    <a th:href=@{'/tournamentAdd'}>ADD</a>
     <tr th:each="tournament: ${tournaments}">
         <td th:text="${tournament.getNom}"></td>
         <td th:text="${tournament.getPrix}"></td>
         <td th:text="${tournament.getDate}"></td>
     </tr>
+
 </body>
 </html>
