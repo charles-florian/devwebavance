@@ -38,14 +38,14 @@ public class TestAffiche {
     @Test
     public void testTournamentController() throws Exception {
 
-        tournaments.add(new Tournament("tata", LocalDate.of(2010,03,24),17.5));
-        tournaments.add(new Tournament("tata1", LocalDate.of(2011,04,25),17.5));
-        tournaments.add(new Tournament("tata2", LocalDate.of(2012,05,26),17.5));
+        tournaments.add(new Tournament("tata", LocalDate.of(2010,03,24),17.5,1));
+        tournaments.add(new Tournament("tata1", LocalDate.of(2011,04,25),17.5,2));
+        tournaments.add(new Tournament("tata2", LocalDate.of(2012,05,26),17.5,3));
 
         //Stub
         Mockito.when(tournamentListUseCase.getTournamentList()).thenReturn(tournaments);
 
-        mockMvc.perform(get("/"))
+        mockMvc.perform(get("/tournamentList"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("tournamentList"))
                 .andExpect(model().attributeExists("tournaments"))

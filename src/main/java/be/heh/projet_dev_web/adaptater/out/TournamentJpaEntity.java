@@ -11,7 +11,9 @@ import java.time.LocalDate;
 @Table(name = "tournaments")
 public class TournamentJpaEntity {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column (name="id_tournament")
+    private long id_tournament;
     @Column(name = "nom")
     private String nom;
 

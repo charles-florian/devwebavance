@@ -20,5 +20,9 @@ public class TournamentPersistenceAdapter implements TournamentListUseCase {
         List<TournamentJpaEntity> tournamentEntity = tournamentRepository.findAll();
         return tournamentMapper.mapToDomainEntity(tournamentEntity);
     }
+    /*@Override
+    public List<Tournament>deletByID(){
+        List<TournamentJpaEntity> tournamentJpaEntities = tournamentRepository.findAll();
+    }*/
 
 }

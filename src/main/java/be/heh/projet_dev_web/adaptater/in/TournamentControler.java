@@ -7,24 +7,24 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class TournamentControler {
-
+    ModelAndView m = new ModelAndView();
     private final TournamentListUseCase tournamentListUseCase;
 
     private List<Tournament> tournaments;
 
-    @GetMapping("/")
-    public String tournamentList(Model model){
+    @GetMapping("/tournamentList")
+    public ModelAndView tournamentList(Model model){
         tournaments = tournamentListUseCase.getTournamentList();
         model.addAttribute("tournaments",tournaments);
-        return  "tournamentList";
+        m.setViewName("tournamentList");
+        return m;
+        //return  "tournamentList";
     }
-
-
-
 }
