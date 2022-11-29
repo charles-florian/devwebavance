@@ -43,11 +43,15 @@ public class TournamentControler {
     }
 
     @PostMapping("/tournamentAdd")
-    public ModelAndView tournamentAdd(@ModelAttribute("tournamentAdd") Tournament tournament){
+    @ResponseBody
+    public RedirectView tournamentAdd(@ModelAttribute("tournamentAdd") Tournament tournament){
         Tournament t = new Tournament(tournament.getNom(), tournament.getDate(), tournament.getPrix(), tournament.getId_tournament());
         tournamentAddUseCase.addTournament(t);
 
-        m.setViewName("index");
-        return m;
+        RedirectView redirectView= new RedirectView("/");
+        return redirectView;
     }
+
+
+
 }
