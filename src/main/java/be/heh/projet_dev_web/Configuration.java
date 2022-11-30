@@ -22,7 +22,7 @@ public class Configuration {
     }
 
     @Bean
-    TournamentListUseCase getTounamentList(){
+    TournamentListUseCase getTournamentList(){
         return new TournamentPersistenceAdapter(tournamentRepository,tournamentMapper);
     }
 

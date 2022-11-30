@@ -37,7 +37,7 @@ public class TournamentControler {
 
     //Post
     private final TournamentAddUseCase tournamentAddUseCase;
-    //private Tournament tournament;
+
     @GetMapping("/tournamentAdd")
     @ResponseBody
     public ModelAndView tournamentAddView(Model model){
@@ -57,9 +57,7 @@ public class TournamentControler {
     }
 
     //UPDATE
-
     private final TournamentUpdateUseCase tournamentUpdateUseCase;
-
 
     @RequestMapping(value = "/tournamentUpdate/{id}", method = RequestMethod.GET)
     public ModelAndView tournamentUpdateView(@PathVariable("id") String id,Model model) {
