@@ -12,19 +12,17 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 @Testcontainers
 @ActiveProfiles("test")
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-
-public class AddPersistenceTests extends AbstractIntegrationTest {
-
+public class DeleteTest {
     private Tournament tournament=new Tournament("VALORANT","now",15.5,10);
 
     @Autowired
@@ -33,21 +31,22 @@ public class AddPersistenceTests extends AbstractIntegrationTest {
     private TournamentMapper tournamentMapper;
     private TournamentPersistenceAdapter tournamentPersistenceAdapter;
 
-
-
     @Test
     @Sql("createTournamentTable.sql")
-    void addTournament(){
-
+    void deleteTournament(){
 
         addPersistenceAdaptater=new AddPersistenceAdaptater(tournamentRepository);
         addPersistenceAdaptater.addTournament(tournament);
-
         tournamentMapper=new TournamentMapper();
         tournamentPersistenceAdapter=new TournamentPersistenceAdapter(tournamentRepository,tournamentMapper);
         List<Tournament> tournaments;
         tournaments=tournamentPersistenceAdapter.getTournamentList();
-        assertEquals("VALORANT",tournaments.get(tournaments.size()-1).getNom());
-    }
+        DeletePersistenceAdaptater deletePersistenceAdaptater=new DeletePersistenceAdaptater(tournamentRepository);
 
+        deletePersistenceAdaptater.tournamentDelete(1L);
+        tournaments=tournamentPersistenceAdapter.getTournamentList();
+
+        assertEquals(0,tournaments.size());
+
+    }
 }
