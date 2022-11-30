@@ -22,6 +22,7 @@ import java.util.List;
 public class TournamentControler {
 
     ModelAndView m = new ModelAndView();
+
     //Get
     private final TournamentListUseCase tournamentListUseCase;
     private List<Tournament> tournaments;
@@ -61,9 +62,13 @@ public class TournamentControler {
 
 
     @RequestMapping(value = "/tournamentUpdate/{id}", method = RequestMethod.GET)
-    public ModelAndView tournamentUpdateView(@PathVariable("id") String id) {
-        tournaments=tournamentUpdateUseCase.toUpdateTournament(id);
+    public ModelAndView tournamentUpdateView(@PathVariable("id") String id,Model model) {
+        Tournament t=tournamentUpdateUseCase.toUpdateTournament(id);
+
         m.setViewName("tournamentUpdate");
+        m.addObject(t);
+        model.addAttribute("tournament",t);
+        //System.out.println(t.getNom()+" "+t.getId_tournament());
         return m ;
 
     }

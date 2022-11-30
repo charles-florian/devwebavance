@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface TournamentUpdateUseCase {
 
-    List<Tournament> toUpdateTournament(String id);
+    Tournament toUpdateTournament(String id);
+
+    void updateTournament(String id);
 
 }

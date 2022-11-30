@@ -17,21 +17,25 @@ public class UpdatePersistenceAdaptater implements TournamentUpdateUseCase {
 
     private final TournamentMapper tournamentMapper;
     @Override
-    public List<Tournament> toUpdateTournament(String id) {
+    public Tournament toUpdateTournament(String id) {
         List<TournamentJpaEntity> tournamentEntity = tournamentRepository.findAll();
         tournaments=tournamentMapper.mapToDomainEntity(tournamentEntity);
-        List<Tournament> toReturn=new ArrayList<>();
+        Tournament toReturn=new Tournament("test","test",20.5,99);
 
         for (Tournament x:tournaments) {
 
             if(x.getId_tournament()==parseLong(id))
             {
-                toReturn.add(x);
-
+                toReturn=x;
             }
         }
 
         return toReturn;
+
+    }
+
+    @Override
+    public void updateTournament(String id) {
 
     }
 }

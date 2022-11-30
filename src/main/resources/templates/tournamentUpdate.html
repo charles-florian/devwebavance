@@ -7,12 +7,14 @@
 <body>
     <h1>UPDATE Tournament</h1>
     <table>
-        <tr th:each="tournament: ${tournaments}">
+       <tr>
             <td th:text="${tournament.getNom}"></td>
             <td th:text="${tournament.getPrix}"></td>
             <td th:text="${tournament.getDate}"></td>
         </tr>
     </table>
+
+
 
 </body>
 </html>
