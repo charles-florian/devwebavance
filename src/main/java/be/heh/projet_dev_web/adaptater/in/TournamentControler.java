@@ -74,9 +74,9 @@ public class TournamentControler {
     }
 
     @RequestMapping(value="tournamentUpdate/tournamentUpdateConfirm/{id}", method = RequestMethod.POST)
-    public RedirectView tournamentUpdate(@PathVariable("id") String id){
-        Tournament t=tournamentUpdateUseCase.toUpdateTournament(id);
-        System.out.println(t.getNom());
+    public RedirectView tournamentUpdate(@PathVariable("id") String id,@ModelAttribute("tournamentUpdate")Tournament tournament){
+        Tournament t=new Tournament(tournament.getNom(),tournament.getDate(),tournament.getPrix(),tournament.getId_tournament());
+
         tournamentUpdateUseCase.updateTournament(t);
 
        RedirectView redirectView= new RedirectView("/");

@@ -41,6 +41,7 @@ public class UpdatePersistenceAdaptater implements TournamentUpdateUseCase {
         tournament.setDate(t.getDate());
         tournament.setNom(t.getNom());
         tournament.setPrix(t.getPrix());
+        System.out.println(tournament.getNom());
         tournamentRepository.save(tournament);
 
     }
