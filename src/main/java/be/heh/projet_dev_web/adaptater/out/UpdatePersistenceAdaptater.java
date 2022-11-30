@@ -35,7 +35,13 @@ public class UpdatePersistenceAdaptater implements TournamentUpdateUseCase {
     }
 
     @Override
-    public void updateTournament(String id) {
+    public void updateTournament(Tournament t){
+
+        TournamentJpaEntity tournament=tournamentRepository.getById(t.getId_tournament());
+        tournament.setDate(t.getDate());
+        tournament.setNom(t.getNom());
+        tournament.setPrix(t.getPrix());
+        tournamentRepository.save(tournament);
 
     }
 }

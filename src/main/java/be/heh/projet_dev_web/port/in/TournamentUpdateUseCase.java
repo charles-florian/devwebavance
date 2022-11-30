@@ -8,6 +8,6 @@ public interface TournamentUpdateUseCase {
 
     Tournament toUpdateTournament(String id);
 
-    void updateTournament(String id);
+    void updateTournament(Tournament t);
 
 }
