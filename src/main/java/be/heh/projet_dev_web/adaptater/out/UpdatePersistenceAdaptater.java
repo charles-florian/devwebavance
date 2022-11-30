@@ -23,26 +23,21 @@ public class UpdatePersistenceAdaptater implements TournamentUpdateUseCase {
         Tournament toReturn=new Tournament("test","test",20.5,99);
 
         for (Tournament x:tournaments) {
-
             if(x.getId_tournament()==parseLong(id))
             {
                 toReturn=x;
             }
         }
-
         return toReturn;
-
     }
 
     @Override
     public void updateTournament(Tournament t){
 
-        TournamentJpaEntity tournament=tournamentRepository.getById(t.getId_tournament());
+        TournamentJpaEntity tournament=tournamentRepository.getReferenceById(t.getId_tournament());
         tournament.setDate(t.getDate());
         tournament.setNom(t.getNom());
         tournament.setPrix(t.getPrix());
-        System.out.println(tournament.getNom());
         tournamentRepository.save(tournament);
-
     }
 }

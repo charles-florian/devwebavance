@@ -31,4 +31,5 @@ public class Configuration {
         return new UpdatePersistenceAdaptater(tournamentRepository,tournamentMapper);
     }
 
+
 }
