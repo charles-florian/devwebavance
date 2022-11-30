@@ -21,7 +21,7 @@ public class TournamentControler {
 
     ModelAndView m = new ModelAndView();
 
-    TournamentDeleteUseCase tournamentDeleteUseCase;
+    private final TournamentDeleteUseCase tournamentDeleteUseCase;
     //Get
     private final TournamentListUseCase tournamentListUseCase;
     private List<Tournament> tournaments;
@@ -58,6 +58,8 @@ public class TournamentControler {
 
     @RequestMapping(value="/tournamentDelete/{id}", method = {RequestMethod.GET ,RequestMethod.DELETE})
     public RedirectView tournamentDelete(@PathVariable("id")Long id){
+        System.out.println(id);
+
         tournamentDeleteUseCase.tournamentDelete(id);
 
         RedirectView redirectView= new RedirectView("/");
