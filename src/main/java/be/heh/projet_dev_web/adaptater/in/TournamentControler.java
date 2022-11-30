@@ -58,7 +58,6 @@ public class TournamentControler {
 
     @RequestMapping(value="/tournamentDelete/{id}", method = {RequestMethod.GET ,RequestMethod.DELETE})
     public RedirectView tournamentDelete(@PathVariable("id")Long id){
-        System.out.println(id);
 
         tournamentDeleteUseCase.tournamentDelete(id);
 
