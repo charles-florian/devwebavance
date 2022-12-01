@@ -41,12 +41,17 @@ public class DeleteTest {
         tournamentPersistenceAdapter=new TournamentPersistenceAdapter(tournamentRepository,tournamentMapper);
         List<Tournament> tournaments;
         tournaments=tournamentPersistenceAdapter.getTournamentList();
+        int x=tournaments.size();
         DeletePersistenceAdaptater deletePersistenceAdaptater=new DeletePersistenceAdaptater(tournamentRepository);
-
         deletePersistenceAdaptater.tournamentDelete(1L);
         tournaments=tournamentPersistenceAdapter.getTournamentList();
+        int y=tournaments.size();
 
-        assertEquals(0,tournaments.size());
+        int z=x-y;
+
+        assertEquals(1,z);
+
+
 
     }
 }

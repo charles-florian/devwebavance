@@ -4,6 +4,7 @@ import be.heh.projet_dev_web.adaptater.in.TournamentControler;
 import be.heh.projet_dev_web.model.Tournament;
 import be.heh.projet_dev_web.port.in.TournamentAddUseCase;
 
+import be.heh.projet_dev_web.port.in.TournamentDeleteUseCase;
 import be.heh.projet_dev_web.port.in.TournamentListUseCase;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -29,6 +30,8 @@ public class AjoutTournamentTests {
 
     @MockBean
     private TournamentListUseCase tournamentListUseCase;
+    @MockBean
+    private TournamentDeleteUseCase tournamentDeleteUseCase;
 
     private Tournament tournament;
 
@@ -39,8 +42,8 @@ public class AjoutTournamentTests {
         //Stub
         Mockito.when(tournamentAddUseCase.addTournament(tournament)).thenReturn(null);
 
-        mockMvc.perform(post("/"))
+        mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("tournamentAdd"));
+                .andExpect(view().name("index"));
     }
 }
