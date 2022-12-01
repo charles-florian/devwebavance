@@ -4,6 +4,7 @@ import be.heh.projet_dev_web.adaptater.in.TournamentControler;
 import be.heh.projet_dev_web.model.Tournament;
 import be.heh.projet_dev_web.port.in.TournamentAddUseCase;
 import be.heh.projet_dev_web.port.in.TournamentListUseCase;
+import be.heh.projet_dev_web.port.in.TournamentUpdateUseCase;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -36,6 +37,8 @@ public class TestAffiche {
 
     @MockBean
     private TournamentAddUseCase tournamentAddUseCase;
+    @MockBean
+    private TournamentUpdateUseCase tournamentUpdateUseCase;
 
 
 

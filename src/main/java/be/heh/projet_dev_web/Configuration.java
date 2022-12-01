@@ -4,6 +4,7 @@ import be.heh.projet_dev_web.adaptater.out.*;
 import be.heh.projet_dev_web.port.in.TournamentAddUseCase;
 import be.heh.projet_dev_web.port.in.TournamentDeleteUseCase;
 import be.heh.projet_dev_web.port.in.TournamentListUseCase;
+import be.heh.projet_dev_web.port.in.TournamentUpdateUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -22,7 +23,7 @@ public class Configuration {
     }
 
     @Bean
-    TournamentListUseCase getTounamentList(){
+    TournamentListUseCase getTournamentList(){
         return new TournamentPersistenceAdapter(tournamentRepository,tournamentMapper);
     }
     @Bean
@@ -30,5 +31,11 @@ public class Configuration {
         return new DeletePersistenceAdaptater(tournamentRepository);
 
     }
+
+    @Bean
+    TournamentUpdateUseCase toUpdateTournament(){
+        return new UpdatePersistenceAdaptater(tournamentRepository,tournamentMapper);
+    }
+
 
 }
