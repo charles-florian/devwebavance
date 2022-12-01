@@ -3,6 +3,7 @@ package be.heh.projet_dev_web.adaptater.in;
 
 import be.heh.projet_dev_web.model.Tournament;
 import be.heh.projet_dev_web.port.in.TournamentAddUseCase;
+import be.heh.projet_dev_web.port.in.TournamentDeleteUseCase;
 import be.heh.projet_dev_web.port.in.TournamentListUseCase;
 import be.heh.projet_dev_web.port.in.TournamentUpdateUseCase;
 import jdk.internal.icu.text.NormalizerBase;
@@ -78,6 +79,18 @@ public class TournamentControler {
         tournamentUpdateUseCase.updateTournament(t);
 
        RedirectView redirectView= new RedirectView("/");
+        return redirectView;
+    }
+
+    //DELETE
+    private final TournamentDeleteUseCase tournamentDeleteUseCase;
+
+    @RequestMapping(value="/tournamentDelete/{id}", method = {RequestMethod.GET ,RequestMethod.DELETE})
+    public RedirectView tournamentDelete(@PathVariable("id")Long id){
+
+        tournamentDeleteUseCase.tournamentDelete(id);
+
+        RedirectView redirectView= new RedirectView("/");
         return redirectView;
 
     }
