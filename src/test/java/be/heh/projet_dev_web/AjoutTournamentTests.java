@@ -4,8 +4,8 @@ import be.heh.projet_dev_web.adaptater.in.TournamentControler;
 import be.heh.projet_dev_web.model.Tournament;
 import be.heh.projet_dev_web.port.in.TournamentAddUseCase;
 
-import be.heh.projet_dev_web.port.in.TournamentDeleteUseCase;
 import be.heh.projet_dev_web.port.in.TournamentListUseCase;
+import be.heh.projet_dev_web.port.in.TournamentUpdateUseCase;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class AjoutTournamentTests {
     @MockBean
     private TournamentListUseCase tournamentListUseCase;
     @MockBean
-    private TournamentDeleteUseCase tournamentDeleteUseCase;
+    private TournamentUpdateUseCase tournamentUpdateUseCase;
 
     private Tournament tournament;
 

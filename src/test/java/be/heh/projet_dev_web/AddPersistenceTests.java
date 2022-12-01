@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AddPersistenceTests extends AbstractIntegrationTest {
 
-    private Tournament tournament=new Tournament("VALORANT","now",15.5,10);
+    private Tournament tournament=new Tournament("VALORANT","LocalDate.now()",15.5,10);
 
     @Autowired
     private TournamentRepository tournamentRepository;
@@ -40,8 +40,7 @@ public class AddPersistenceTests extends AbstractIntegrationTest {
     void addTournament(){
 
 
-        addPersistenceAdaptater=new AddPersistenceAdaptater(tournamentRepository);
-        addPersistenceAdaptater.addTournament(tournament);
+
 
         tournamentMapper=new TournamentMapper();
         tournamentPersistenceAdapter=new TournamentPersistenceAdapter(tournamentRepository,tournamentMapper);
