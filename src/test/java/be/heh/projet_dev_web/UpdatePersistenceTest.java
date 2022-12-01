@@ -49,6 +49,7 @@ public class UpdatePersistenceTest {
         tournaments=tournamentPersistenceAdapter.getTournamentList();
 
         assertEquals("CSGO",tournaments.get(tournaments.size()-1).getNom());
+
     }
 
 
