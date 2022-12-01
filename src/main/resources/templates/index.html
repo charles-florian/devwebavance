@@ -4,31 +4,40 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        html{background-color: #222222;}
+        html{background-color: #222222; }
         body{background-color: #222222;}
-        table{   color: beige; border: solid; margin: 0.4em 0em 0.4em 0em;border-radius: 15%;justify-content: space-around; display: flex}
+        table{  color: beige; border: solid; margin: 0.4em 0em 0.4em 0em;border-radius: 15%;display: flex;justify-content: center;  width: 600px;}
         a{   color: beige;text-decoration: none;}
         h1{   color: beige;}
-        td{padding: 0em 1em 0em 1em; border: solid; justify-content: space-around; padding: 0.8em 0.5em 0.8em 0.5em;}
+        td{margin: 0em 1em 0em 1em; border: solid; justify-content: space-around; padding: 0.8em 0.5em 0.8em 0.5em;}
         tr{text-align: center; border: solid; margin: 4em 0em 4em 0em;}
         .button{border: none; text-decoration: underline;}
         a:hover{color: darkmagenta}
         h1{text-align: center; text-decoration: underline;}
+        div{display: flex;justify-content: center}
+        #add{ display: flex; justify-content: center; margin-bottom: 0.5em}
     </style>
 </head>
 <body>
 
-    <h1>coucou</h1>
-    <a th:href=@{'/tournamentAdd'}>ADD</a>
+    <h1>Site du GAME</h1>
+    <a id="add" th:href=@{'/tournamentAdd'}>ADD</a>
+    <div>
+        <table>
+            <tr>
+                <th>NOM</th>
+                <th>PRIX</th>
+                <th>DATE</th>
+            </tr>
+            <tr th:each="tournament: ${tournaments}">
 
-    <table>
-        <tr th:each="tournament: ${tournaments}">
-            <td th:text="${tournament.getNom}"></td>
-            <td th:text="${tournament.getPrix}"></td>
-            <td th:text="${tournament.getDate}"></td>
-            <td><a th:href=@{'/tournamentUpdate/'}+${tournament.getId_tournament}>UPDATE</a></td>
-            <td><a th:href=@{'/tournamentDelete/'}+${tournament.getId_tournament}>DELETE</a></td>
-        </tr>
-    </table>
+                <td th:text="${tournament.getNom}"></td>
+                <td th:text="${tournament.getPrix}"></td>
+                <td th:text="${tournament.getDate}"></td>
+                <td><a th:href=@{'/tournamentUpdate/'}+${tournament.getId_tournament}>UPDATE</a></td>
+                <td><a th:href=@{'/tournamentDelete/'}+${tournament.getId_tournament}>DELETE</a></td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>

@@ -3,23 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        html{background-color: #222222;}
+        body{background-color: #222222; justify-content: center;}
+        h1{color: beige;text-align: center; text-decoration: underline;}
+        form{text-align: center;}
+        table{  color: beige; display: flex; justify-content: center;}
+        div{display: flex; justify-content: center; flex-direction: row;}
+    </style>
 </head>
 <body>
     <h1>UPDATE Tournament</h1>
-    <table>
-       <tr>
-            <td th:text="${tournament.getNom}"></td>
-            <td th:text="${tournament.getPrix}"></td>
-            <td th:text="${tournament.getDate}"></td>
-        </tr>
-    </table>
-    <form method="post" name="updateTournament"  th:action=@{'tournamentUpdateConfirm/'}+${tournament.getId_tournament()}>
-        <input type="text" name="id_tournament" th:value="${tournament.getId_tournament()}" style="display:none" >
-        <input type="text" name="nom" th:value="${tournament.getNom()}" required/><br><br>
-        <input type="date"  name="date" th:value="${tournament.getDate()}" required/><br><br>
-        <input type="text" name="prix"  th:value="${tournament.getPrix()}" required/><br><br>
-        <input type="submit" />
-    </form>
+    <div>
+        <table>
+            <tr>
+                <th>NOM</th>
+                <th>DATE</th>
+                <th>PRIX</th>
+            </tr>
+           <tr>
+                <td th:text="${tournament.getNom}"></td>
+                <td th:text="${tournament.getDate}"></td>
+                <td th:text="${tournament.getPrix}"></td>
+            </tr>
+        </table>
+        <form method="post" name="updateTournament"  th:action=@{'tournamentUpdateConfirm/'}+${tournament.getId_tournament()}>
+            <input type="text" name="id_tournament" th:value="${tournament.getId_tournament()}" style="display:none" >
+            <input type="text" name="nom" th:value="${tournament.getNom()}" required/><br><br>
+            <input type="date"  name="date" th:value="${tournament.getDate()}" required/><br><br>
+            <input type="text" name="prix"  th:value="${tournament.getPrix()}" required/><br><br>
+            <input type="submit"/>
+        </form>
+    </div>
 
 
 
