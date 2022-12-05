@@ -23,7 +23,6 @@ import java.util.List;
 public class TournamentControler {
 
     ModelAndView m = new ModelAndView();
-
     //Get
     private final TournamentListUseCase tournamentListUseCase;
     private List<Tournament> tournaments;
@@ -31,18 +30,14 @@ public class TournamentControler {
     public ModelAndView tournamentList(Model model){
         tournaments = tournamentListUseCase.getTournamentList();
         model.addAttribute("tournaments",tournaments);
-
         m.setViewName("index");
         return m;
     }
-
     //Post
     private final TournamentAddUseCase tournamentAddUseCase;
-
     @GetMapping("/tournamentAdd")
     @ResponseBody
     public ModelAndView tournamentAddView(Model model){
-
         m.setViewName("tournamentAdd");
         return m;
     }
@@ -52,7 +47,6 @@ public class TournamentControler {
     public RedirectView tournamentAdd(@ModelAttribute("tournamentAdd") Tournament tournament){
         Tournament t = new Tournament(tournament.getNom(), tournament.getDate(), tournament.getPrix(), tournament.getId_tournament());
         tournamentAddUseCase.addTournament(t);
-
         RedirectView redirectView= new RedirectView("/");
         return redirectView;
     }
@@ -63,36 +57,24 @@ public class TournamentControler {
     @RequestMapping(value = "/tournamentUpdate/{id}", method = RequestMethod.GET)
     public ModelAndView tournamentUpdateView(@PathVariable("id") String id,Model model) {
         Tournament t=tournamentUpdateUseCase.toUpdateTournament(id);
-
         m.setViewName("tournamentUpdate");
         m.addObject(t);
         model.addAttribute("tournament",t);
-        //System.out.println(t.getNom()+" "+t.getId_tournament());
         return m ;
-
     }
-
     @RequestMapping(value="tournamentUpdate/tournamentUpdateConfirm/{id}", method = RequestMethod.POST)
     public RedirectView tournamentUpdate(@PathVariable("id") String id,@ModelAttribute("tournamentUpdate")Tournament tournament){
         Tournament t=new Tournament(tournament.getNom(),tournament.getDate(),tournament.getPrix(),tournament.getId_tournament());
-
         tournamentUpdateUseCase.updateTournament(t);
-
        RedirectView redirectView= new RedirectView("/");
         return redirectView;
     }
-
     //DELETE
     private final TournamentDeleteUseCase tournamentDeleteUseCase;
-
     @RequestMapping(value="/tournamentDelete/{id}", method = {RequestMethod.GET ,RequestMethod.DELETE})
     public RedirectView tournamentDelete(@PathVariable("id")Long id){
-
         tournamentDeleteUseCase.tournamentDelete(id);
-
         RedirectView redirectView= new RedirectView("/");
         return redirectView;
-
     }
-
 }
