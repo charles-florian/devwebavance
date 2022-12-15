@@ -2,7 +2,7 @@
 <html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Site du GAME</title>
     <style>
         html{background-color: #222222; }
         body{background-color: #222222;}
@@ -19,17 +19,12 @@
     </style>
 </head>
 <body>
-
     <h1>Site du GAME</h1>
-
-
     <div sec:authorize="!isAuthenticated()">
         <a th:href="@{/oauth2/authorization/auth0}">Log In</a>
     </div>
     <div sec:authorize="isAuthenticated()">
-
-
-        <a id="add" th:href=@{'/tournamentAdd'}>ADD</a>
+        <a id="add"  th:href=@{'/tournamentAdd'}>ADD</a>
         <div>
             <table>
                 <tr>
