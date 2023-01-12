@@ -29,7 +29,7 @@
         </table>
         <form method="post" name="updateTournament"  th:action=@{'tournamentUpdateConfirm/'}+${tournament.getId_tournament()}>
             <input type="text" name="id_tournament" th:value="${tournament.getId_tournament()}" style="display:none" >
-            <input type="text" name="nom" th:value="${tournament.getNom()}" required/><br><br>
+            <input type="text" maxlength="15" name="nom" th:value="${tournament.getNom()}" required/><br><br>
             <input type="date"  name="date" th:value="${tournament.getDate()}" required/><br><br>
             <input type="text" name="prix"  th:value="${tournament.getPrix()}" required/><br><br>
             <input type="submit"/>

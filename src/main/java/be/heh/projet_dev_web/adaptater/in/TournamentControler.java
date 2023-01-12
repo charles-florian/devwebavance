@@ -29,6 +29,7 @@ public class TournamentControler {
     @GetMapping("/")
     public ModelAndView tournamentList(Model model){
         tournaments = tournamentListUseCase.getTournamentList();
+
         model.addAttribute("tournaments",tournaments);
         m.setViewName("index");
         return m;
@@ -77,4 +78,6 @@ public class TournamentControler {
         RedirectView redirectView= new RedirectView("/");
         return redirectView;
     }
+
+
 }
