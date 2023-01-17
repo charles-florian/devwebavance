@@ -14,6 +14,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.List;
 
+import static java.lang.Long.parseLong;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -23,27 +24,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class DeleteTest {
-    private Tournament tournament=new Tournament("VALORANT","now",15.5,10);
+
 
     @Autowired
     private TournamentRepository tournamentRepository;
-    private AddPersistenceAdaptater addPersistenceAdaptater;
     private TournamentMapper tournamentMapper;
     private TournamentPersistenceAdapter tournamentPersistenceAdapter;
 
     @Test
-    @Sql("createTournamentTable.sql")
+    @Sql({"creatingTournamentTable.sql", "putTournament.sql"})
     void deleteTournament(){
 
-        addPersistenceAdaptater=new AddPersistenceAdaptater(tournamentRepository);
-        addPersistenceAdaptater.addTournament(tournament);
+
         tournamentMapper=new TournamentMapper();
         tournamentPersistenceAdapter=new TournamentPersistenceAdapter(tournamentRepository,tournamentMapper);
         List<Tournament> tournaments;
         tournaments=tournamentPersistenceAdapter.getTournamentList();
         int x=tournaments.size();
+        Tournament t=tournaments.get(x-1);
         DeletePersistenceAdaptater deletePersistenceAdaptater=new DeletePersistenceAdaptater(tournamentRepository);
-        deletePersistenceAdaptater.tournamentDelete(1L);
+        deletePersistenceAdaptater.tournamentDelete(t.getId_tournament());
         tournaments=tournamentPersistenceAdapter.getTournamentList();
         int y=tournaments.size();
 

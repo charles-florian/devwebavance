@@ -12,7 +12,7 @@ public class TournamentPersistenceAdapter implements TournamentListUseCase {
 
 
     private final TournamentRepository tournamentRepository;
-    private List<Tournament> tournaments;
+
 
     private final TournamentMapper tournamentMapper;
 

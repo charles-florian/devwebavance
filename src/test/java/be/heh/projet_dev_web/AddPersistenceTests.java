@@ -12,7 +12,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AddPersistenceTests extends AbstractIntegrationTest {
 
-    private Tournament tournament=new Tournament("VALORANT","LocalDate.now()",15.5,10);
+    private Tournament tournament=new Tournament("Cyberpunk","LocalDate.now()",15.5,10);
 
     @Autowired
     private TournamentRepository tournamentRepository;
@@ -36,17 +35,15 @@ public class AddPersistenceTests extends AbstractIntegrationTest {
 
 
     @Test
-    @Sql("createTournamentTable.sql")
+    @Sql("creatingTournamentTable.sql")
     void addTournament(){
-
-
-
-
+        addPersistenceAdaptater=new AddPersistenceAdaptater(tournamentRepository);
+        addPersistenceAdaptater.addTournament(tournament);
         tournamentMapper=new TournamentMapper();
         tournamentPersistenceAdapter=new TournamentPersistenceAdapter(tournamentRepository,tournamentMapper);
         List<Tournament> tournaments;
         tournaments=tournamentPersistenceAdapter.getTournamentList();
-        assertEquals("VALORANT",tournaments.get(tournaments.size()-1).getNom());
+        assertEquals("Cyberpunk",tournaments.get(tournaments.size()-1).getNom());
     }
 
 }

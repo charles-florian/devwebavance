@@ -32,25 +32,22 @@ public class UpdatePersistenceTest {
     private TournamentPersistenceAdapter tournamentPersistenceAdapter;
 
     @Test
-    @Sql({"createTournamentTable.sql"})
+    @Sql({"creatingTournamentTable.sql", "putTournament.sql"})
     void getTournamentList(){
 
-        Tournament tournament=new Tournament("VALORANT","747",21.2,1);
-        AddPersistenceAdaptater addPersistenceAdaptater = new AddPersistenceAdaptater(tournamentRepository);
-        addPersistenceAdaptater.addTournament(tournament);
+
 
         tournamentMapper=new TournamentMapper();
         tournamentPersistenceAdapter=new TournamentPersistenceAdapter(tournamentRepository,tournamentMapper);
         List<Tournament> tournaments;
         tournaments=tournamentPersistenceAdapter.getTournamentList();
+
+        Tournament x=tournaments.get(tournaments.size()-1);
         updatePersistenceAdaptater=new UpdatePersistenceAdaptater(tournamentRepository,tournamentMapper);
-        Tournament t=new Tournament("CSGO","747",21.2,1);
+        Tournament t=new Tournament("CSGO","747",21.2,x.getId_tournament());
         updatePersistenceAdaptater.updateTournament(t);
         tournaments=tournamentPersistenceAdapter.getTournamentList();
-
         assertEquals("CSGO",tournaments.get(tournaments.size()-1).getNom());
 
     }
-
-
 }
